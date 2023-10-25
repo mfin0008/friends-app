@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./frontend/images/Friends-logo.png";
+import "./App.css";
+import {
+  HStack,
+  Divider,
+  Center,
+  ChakraProvider,
+} from "@chakra-ui/react";
+import FindAQuote from "./frontend/FindAQuote";
+import InterestingFacts from "./frontend/InterestingFacts";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+        </header>
+        <div height="100vh">
+            <HStack>
+              <FindAQuote />
+              <Center height="80vh">
+                <Divider
+                  orientation="vertical"
+                  borderColor="#d6d6d6"
+                />
+              </Center>
+              <InterestingFacts/>
+            </HStack>
+        </div>
+      </div>
+    </ChakraProvider>
   );
 }
 
