@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, VStack, Center, Text} from "@chakra-ui/react";
+import { Button, Card, CardBody, VStack, Center, Text, Divider} from "@chakra-ui/react";
 import { RepeatIcon } from '@chakra-ui/icons'
 
 
@@ -43,6 +43,10 @@ export default function InterestingFacts() {
                 </Card>
 
                 <Button onClick={handleFactRegeneration} rightIcon={<RepeatIcon/>}>Regenerate facts</Button>
+
+                <Divider />
+
+                <Text m="2vh 2vw">In memory of Matthew Perry, a fantastically talented individual whose work continues to bring smiles to faces worldwide.</Text>
 
             </VStack>
 
