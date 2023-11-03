@@ -1,6 +1,5 @@
 import logo from "./frontend/images/Friends-logo.png";
 import "./App.css";
-import cassandraInitialiser from "./python/cassandra/cassandraInitialiser.py";
 import { HStack, Divider, Center, ChakraProvider } from "@chakra-ui/react";
 import FindAQuote from "./frontend/FindAQuote";
 import InterestingFacts from "./frontend/InterestingFacts";
@@ -24,30 +23,6 @@ const runCode = async (scriptText) => {
     }
 };
 
-const runFile = async (fileName) => {
-    const scriptText = await (await fetch(fileName)).text();
-    try {
-        const out = await runScript(scriptText);
-        console.log(out);
-    }
-    catch (err) {
-        console.log(err);
-    }
-};
-
-const initialiseCassandra = () => {
-    const {exec} = require('child_process');
-
-    exec('python ./python/cassandra/cassandraInitialiser.py', (error, stdout, stderr) => {
-        if (error) {
-          console.error(`exec error: ${error}`);
-          return;
-        }
-        console.log(`stdout: ${stdout}`);
-        console.error(`stderr: ${stderr}`);
-      });
-}
-
 function App() {
     useEffect(() => {
         runCode(`
@@ -56,12 +31,6 @@ function App() {
         func()
       `);
     }, []);
-
-    useEffect(() => {
-        runFile(cassandraInitialiser);
-    }, []);
-
-    initialiseCassandra();
 
     return (
         <ChakraProvider>

@@ -62,16 +62,10 @@ def main():
         )
     """)
 
-    # # if the database is empty, parse and insert the values from the dataset
+    # check how many rows have already been added to the database, skip these when inserting
     number_of_rows = session.execute("""
         select count(*) from utterances_by_id;
                     """).one().count
-    
-    # if number_of_rows == 0:
-    #     for utterance_object in parse_utterance_values():
-    #         session.execute(f"insert into utterances_by_id (utterance_id, season, episode, scene, utterance) values ({utterance_object['utterance_id']}, {utterance_object['season']}, {utterance_object['episode']}, {utterance_object['scene']}, {utterance_object['utterance']}) if not exists;")
-    # else:
-    #     print(type(number_of_rows))
 
     prepared_statement = session.prepare("insert into utterances_by_id (utterance_id, season, episode, scene, utterance) values (?, ?, ?, ?, ?) if not exists")
     for utterance_object in parse_utterance_values():
