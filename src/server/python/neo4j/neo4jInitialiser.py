@@ -26,7 +26,7 @@ def populate_neo4j_database_from_csv(session, csv_file):
                 """
                 MERGE (e:Episode {episode_num: $episode_num, title: $title, air_date: $air_date, views: $views, rating: $rating})
                 MERGE (s:Season {season_num: $season_num})
-                CREATE (e)-[:IN]->(s)
+                MERGE (e)-[:IN]->(s)
                 """,
                 season_num=season_num,
                 episode_num=episode_num,
@@ -42,7 +42,7 @@ def populate_neo4j_database_from_csv(session, csv_file):
                     """
                     MERGE (c:CrewMember {name: $director})
                     MERGE (e:Episode {episode_num: $episode_num})-[:IN]->(s:Season {season_num: $season_num})
-                    CREATE (e)-[:DIRECTED_BY]->(c)
+                    MERGE (e)-[:DIRECTED_BY]->(c)
                     """,
                     director=director,
                     episode_num=episode_num,
@@ -55,7 +55,7 @@ def populate_neo4j_database_from_csv(session, csv_file):
                     """
                     MERGE (c:CrewMember {name: $writer})
                     MERGE (e:Episode {episode_num: $episode_num})-[:IN]->(s:Season {season_num: $season_num})
-                    CREATE (e)-[:WRITTEN_BY]->(c)
+                    MERGE (e)-[:WRITTEN_BY]->(c)
                     """,
                     writer=writer,
                     episode_num=episode_num,
