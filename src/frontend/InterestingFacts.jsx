@@ -306,7 +306,7 @@ export default function InterestingFacts() {
                 </Card>
 
                 <Button onClick={regenerateFacts} rightIcon={<RepeatIcon />}>
-                    Regenerate facts
+                    Regenerate Facts
                 </Button>
 
                 <Divider />
