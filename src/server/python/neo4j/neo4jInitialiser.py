@@ -12,8 +12,8 @@ def populate_neo4j_database_from_csv(session, csv_file):
             air_date = row["air_date"]
             views = float(row["us_views_millions"])
             rating = float(row["imdb_rating"])
-            director = row["directed_by"]
-            writer = row["written_by"]
+            directors = row["directed_by"].split(" & ")
+            writers = row["written_by"].split(" & ")
 
             # Create Season node 
             session.write_transaction(lambda tx: tx.run(
@@ -37,26 +37,30 @@ def populate_neo4j_database_from_csv(session, csv_file):
             ))
 
             # Create Director node and relationship to Episode
-            session.write_transaction(lambda tx: tx.run(
-                """
-                MERGE (c:CrewMember {name: $director})
-                MERGE (e:Episode {episode_num: $episode_num})
-                CREATE (e)-[:DIRECTED_BY]->(c)
-                """,
-                director=director,
-                episode_num=episode_num
-            ))
+            for director in directors:
+                session.write_transaction(lambda tx: tx.run(
+                    """
+                    MERGE (c:CrewMember {name: $director})
+                    MERGE (e:Episode {episode_num: $episode_num})-[:IN]->(s:Season {season_num: $season_num})
+                    CREATE (e)-[:DIRECTED_BY]->(c)
+                    """,
+                    director=director,
+                    episode_num=episode_num,
+                    season_num=season_num
+                ))
 
             # Create Writer node and relationship to Episode
-            session.write_transaction(lambda tx: tx.run(
-                """
-                MERGE (c:CrewMember {name: $writer})
-                MERGE (e:Episode {episode_num: $episode_num})
-                CREATE (e)-[:WRITTEN_BY]->(c)
-                """,
-                writer=writer,
-                episode_num=episode_num
-            ))
+            for writer in writers: 
+                session.write_transaction(lambda tx: tx.run(
+                    """
+                    MERGE (c:CrewMember {name: $writer})
+                    MERGE (e:Episode {episode_num: $episode_num})-[:IN]->(s:Season {season_num: $season_num})
+                    CREATE (e)-[:WRITTEN_BY]->(c)
+                    """,
+                    writer=writer,
+                    episode_num=episode_num,
+                    season_num=season_num
+                ))
     
 if __name__ == "__main__":   
     URI = "bolt://localhost:7687"
