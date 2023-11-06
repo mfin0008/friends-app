@@ -8,7 +8,7 @@ app.use(express.json());
 
 /* CASSANDRA */
 
-// initialise the cassandra database
+// initialise the databases
 app.listen(8000, () => {
     const { exec } = require("child_process");
 
