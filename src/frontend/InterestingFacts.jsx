@@ -192,13 +192,13 @@ export default function InterestingFacts() {
                                     <Text><i>Season {lowestRatedEpisode.season_num.low}, episode {lowestRatedEpisode.episode.episode_num.low}</i>, titled <i>"{lowestRatedEpisode.episode.title}"</i>, rated <i>{lowestRatedEpisode.episode.rating}</i> on IMDB!</Text>
                                 </>
                             )}
-                            {currentFactIndex === 6 && mostViewedEpisode && (
+                            {currentFactIndex === 6 && leastViewedEpisode && (
                                 <>
                                     <Text><i>Season {leastViewedEpisodeSeason.season_num.low}, episode {leastViewedEpisode.episode_num.low}</i> titled: <i>"{leastViewedEpisode.title}"</i></Text>
                                     <Text>Airing on <i>{leastViewedEpisode.air_date}</i> to <i>{leastViewedEpisode.views} million</i> viewers</Text>
                                 </>
                             )}
-                            {currentFactIndex === 7 && lowestRatedEpisode && (
+                            {currentFactIndex === 7 && earliestAiredEpisode && (
                                 <>
                                     <Text><i>Season {earliestAiredEpisode.season_num.low}, episode {earliestAiredEpisode.episode.episode_num.low}</i>, titled <i>"{earliestAiredEpisode.episode.title}"</i>, on <i>{earliestAiredEpisode.episode.air_date}</i></Text>
                                 </>
@@ -241,13 +241,13 @@ export default function InterestingFacts() {
                                     <Text><i>Season {lowestRatedEpisode.season_num.low}, episode {lowestRatedEpisode.episode.episode_num.low}</i>, titled <i>"{lowestRatedEpisode.episode.title}"</i>, rated <i>{lowestRatedEpisode.episode.rating}</i> on IMDB!</Text>
                                 </>
                             )}
-                            {currentFactIndex === 7 && mostViewedEpisode && (
+                            {currentFactIndex === 7 && leastViewedEpisode && (
                                 <>
                                     <Text><i>Season {leastViewedEpisodeSeason.season_num.low}, episode {leastViewedEpisode.episode_num.low}</i> titled: <i>"{leastViewedEpisode.title}"</i></Text>
                                     <Text>Airing on <i>{leastViewedEpisode.air_date}</i> to <i>{leastViewedEpisode.views} million</i> viewers</Text>
                                 </>
                             )}
-                            {currentFactIndex === 0 && lowestRatedEpisode && (
+                            {currentFactIndex === 0 && earliestAiredEpisode && (
                                 <>
                                     <Text><i>Season {earliestAiredEpisode.season_num.low}, episode {earliestAiredEpisode.episode.episode_num.low}</i>, titled <i>"{earliestAiredEpisode.episode.title}"</i>, on <i>{earliestAiredEpisode.episode.air_date}</i></Text>
                                 </>
@@ -290,13 +290,13 @@ export default function InterestingFacts() {
                                     <Text><i>Season {lowestRatedEpisode.season_num.low}, episode {lowestRatedEpisode.episode.episode_num.low}</i>, titled <i>"{lowestRatedEpisode.episode.title}"</i>, rated <i>{lowestRatedEpisode.episode.rating}</i> on IMDB!</Text>
                                 </>
                             )}
-                            {currentFactIndex === 0 && mostViewedEpisode && (
+                            {currentFactIndex === 0 && leastViewedEpisode && (
                                 <>
                                     <Text><i>Season {leastViewedEpisodeSeason.season_num.low}, episode {leastViewedEpisode.episode_num.low}</i> titled: <i>"{leastViewedEpisode.title}"</i></Text>
                                     <Text>Airing on <i>{leastViewedEpisode.air_date}</i> to <i>{leastViewedEpisode.views} million</i> viewers</Text>
                                 </>
                             )}
-                            {currentFactIndex === 1 && lowestRatedEpisode && (
+                            {currentFactIndex === 1 && earliestAiredEpisode && (
                                 <>
                                     <Text><i>Season {earliestAiredEpisode.season_num.low}, episode {earliestAiredEpisode.episode.episode_num.low}</i>, titled <i>"{earliestAiredEpisode.episode.title}"</i>, on <i>{earliestAiredEpisode.episode.air_date}</i></Text>
                                 </>
