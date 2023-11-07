@@ -26,11 +26,6 @@ def parse_quotes():
 def main():
     client = pymongo.MongoClient("mongodb://localhost:27017/")
 
-    # connect to the Altas connection:
-    uri = "mongodb+srv://mfin0008:GzBKV51gjG4e35Z0@cluster0.saswisr.mongodb.net/?retryWrites=true&w=majority"
-    # Create a new client and connect to the server [you will need to change the username and password]
-    client = MongoClient(uri, server_api=ServerApi('1'))
-
     # Parse data from the .csv file
     utterance_objects = parse_quotes()
 
